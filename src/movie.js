@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchMovieId, fetchSearchText} from './services'
+import {fetchMovieByID, fetchSearchText} from './services'
 
 
 class HelloWorld extends React.Component {
@@ -50,9 +50,6 @@ class HelloWorld extends React.Component {
                 //               })
                 // })
 
-
-
-
     }
 
     //  movieSelected = (id) =>  {
@@ -60,16 +57,22 @@ class HelloWorld extends React.Component {
     //         return false;
     // }
 
-    getMovie  = (movieID) => {
+    getMovieByID  = (movieID) => {
         // let movieId = sessionStorage.getItem('movieId');
-        fetchMovieId(movieID)
+        fetchMovieByID(movieID)
             . then(response => {
                 console.log(response)
-                // TODO rerender on empty body like course editor with movie details 
+                let selectedMovie = response;
+                sessionStorage.setItem('movieID', movieID );
+
+                // TODO rerender on empty body like course editor with movie details
+                console.log(selectedMovie.Title)
+                console.log(selectedMovie.Year)
+
 
             })
-
     }
+
 
 
 
@@ -133,7 +136,7 @@ class HelloWorld extends React.Component {
 
                         this.state.movie.map(   m =>
 
-                                                   <div className="col-md-3" key={m.imdbID}  onClick={() => this.getMovie(m.imdbID)}>
+                                                   <div className="col-md-3" key={m.imdbID}  onClick={() => this.getMovieByID(m.imdbID)}>
                                                        <div className={"well text-center"}>
                                                        <img src = { m.Poster }/>
                                                        <h5> {m.Title} </h5>

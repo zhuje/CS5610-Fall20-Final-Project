@@ -12,6 +12,6 @@ export const fetchSearchText = (searchText) =>
 
 
 
-export const fetchMovieId = (movieID) =>
+export const fetchMovieByID = (movieID) =>
     fetch(`http://www.omdbapi.com/?apikey=b01479c3&i=` + movieID)
         .then(response => response.json());
