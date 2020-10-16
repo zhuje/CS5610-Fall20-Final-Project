@@ -1,12 +1,11 @@
 import React from "react";
 
 //update as child of parent "Users" component
+//double check bootstrap installed
 
 const Login = () => {
     return (
         <div>
-            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-                  rel="stylesheet"/>
             <h1>Login</h1>
 
             <div className="form-group row">
