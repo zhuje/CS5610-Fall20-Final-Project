@@ -1,5 +1,5 @@
 import React from 'react';
-import {fetchMovieByID, fetchSearchText} from './services'
+import {fetchMovieByID, fetchSearchText} from '../services/services'
 
 
 class HelloWorld extends React.Component {

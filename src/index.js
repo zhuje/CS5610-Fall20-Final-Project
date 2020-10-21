@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import HelloWorld from "./movie";
+import HelloWorld from "./components/SearchComponent";
 
 ReactDOM.render(
     <React.StrictMode>
