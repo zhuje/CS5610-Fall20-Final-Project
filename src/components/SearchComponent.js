@@ -1,10 +1,11 @@
 import React from 'react';
-import {fetchMovieByID, fetchSearchText} from '../services/services'
+import searchService, {fetchMovieByID, fetchSearchText} from '../services/SearchService'
 import '../style/style.SearchComponent.css'
 import Card from 'react-bootstrap/Card'
 import Button from "react-bootstrap/Button";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import SearchCardComponent from './SearchCardComponent'
 
 
 
@@ -39,20 +40,20 @@ class SearchComponent extends React.Component {
     }
 
 
-    getMovieByID  = (movieID) => {
-        // let movieId = sessionStorage.getItem('movieId');
-        fetchMovieByID(movieID)
-            . then(response => {
-                console.log(response)
-                let selectedMovie = response;
-                sessionStorage.setItem('movieID', movieID );
-
-                // TODO rerender on empty body like course editor with movie details
-                console.log(selectedMovie.Title)
-                console.log(selectedMovie.Year)
-
-            })
-    }
+    // getMovieByID  = (movieID) => {
+    //     // let movieId = sessionStorage.getItem('movieId');
+    //     fetchMovieByID(movieID)
+    //         . then(response => {
+    //             console.log(response)
+    //             let selectedMovie = response;
+    //             sessionStorage.setItem('movieID', movieID );
+    //
+    //             // TODO rerender on empty body like course editor with movie details
+    //             console.log(selectedMovie.Title)
+    //             console.log(selectedMovie.Year)
+    //
+    //         })
+    // }
 
 
 
@@ -102,22 +103,25 @@ class SearchComponent extends React.Component {
                         this.state.movie.map( m =>
 
                                                   <Card className={"wbdv-search-card text-center"} style={{ width: '18rem' }}>
-                                                      <Card.Img variant="top" src= {m.Poster} />
+                                                      <Card.Img className={"wbdv-search-card-img-top"} variant="top" src= {m.Poster} />
                                                       <Card.Body className={"d-flex flex-column "}>
                                                           <Card.Title> {m.Title} </Card.Title>
                                                           <Card.Text>
                                                               {m.Year}
                                                           </Card.Text>
                                                           <Link className={"mt-auto"}  to={`/searchByID/${m.imdbID}`}>
-                                                                <Button  onClick={()=> alert( "Click ID: " + m.imdbID )}  className={"  btn btn-lg btn-block btn-primary "} variant="primary"> Details </Button>
+                                                                <Button  onClick={()=> this.props.fetchMovieByID(m.imdbID)}  className={"  btn btn-lg btn-block btn-primary wbdv-search-details-btn"} variant="primary"> Details </Button>
                                                           </Link>
 
                                                           <Button className={" align-self-end btn btn-lg btn-block btn-danger "} variant="primary"> Add </Button>
                                                       </Card.Body>
                                                   </Card>
 
+
+
                             )
                     }
+
                 </div>
             </div>
         </div>
@@ -127,14 +131,26 @@ class SearchComponent extends React.Component {
 }
 
 
+const stateToPropertyMapper = (state) => ({
+   movie: state.searchReducer.movie
+
+})
+
+
 const propertyToDispatchMapper = (dispatch) => ({
-    dispatchSearchByMovieID: (imdbID) =>
+    dispatchSearchByMovieID: (movie) =>
         dispatch({
                    type: "UPDATE_SEARCH_MOVIE_ID",
-                   imdbID: imdbID
-               })
+                   movie: movie
+               }),
+    fetchMovieByID: ( movieID ) =>
+        searchService.fetchMovieByID( movieID )
+            .then(actualMovie => dispatch({
+                                              type: "REDUCER_MOVIE_DETAILS",
+                                              movieDetails: actualMovie
+                                          }))
 })
 
 export default connect
-(propertyToDispatchMapper)
+(stateToPropertyMapper, propertyToDispatchMapper)
 (SearchComponent) ;
