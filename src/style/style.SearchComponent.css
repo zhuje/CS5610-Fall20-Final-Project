@@ -1,7 +1,11 @@
 
 .wbdv-search-card{
-   margin:30px;
+   /*margin:15px;*/
+   margin: 0 auto;
+   float: none;
+   margin-bottom: 15px;
 }
+
 
 .wbdv-search-card-img-top {
    width: 100%;
@@ -15,10 +19,15 @@
 
 
 .wdbv-searchByID-row {
-   margin-top : 55px;
+   margin-top : 20px;
 }
 
 .wbdv-searchByID-card-img-top {
    width: 100%;
    height: 25vw;
+}
+
+.wdbv-searchByID-header {
+   margin-top : 20px;
+   margin-left : 45px;
 }

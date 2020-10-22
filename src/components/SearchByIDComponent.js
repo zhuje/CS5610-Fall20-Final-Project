@@ -12,24 +12,12 @@ const SearchByIDComponent = ({ movie={}, movieDetails={}, fetchMovieByID  }) =>
     <div>
 
 
-        <nav className="navbar navbar-default">
-            <div className="container">
-                <div className="navbar-header">
-                    <a className="navbar-brand" href="index.html"> MovieMatch </a>
-                </div>
-            </div>
-        </nav>
 
-
-        <PageHeader> Movie Details </PageHeader>
-
-
-
-
-
-
+        <h1 className={"wdbv-searchByID-header"}> Movie Details </h1>
 
         <div className="row wdbv-searchByID-row">
+
+
         <div className="col-4">
 
 
