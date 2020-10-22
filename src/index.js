@@ -3,11 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import HelloWorld from "./components/SearchComponent";
+import {ManagerComponent} from "./components/ManagerComponent";
+import searchReducer from "./reducer/searchReducer";
+import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
+
+
+const reducers = combineReducers({ searchReducer })
+const store = createStore(reducers)
+
 
 ReactDOM.render(
-    <React.StrictMode>
-        <HelloWorld />
-    </React.StrictMode>,
+    <Provider store={store}>
+        <ManagerComponent />
+    </Provider>,
     document.getElementById('root')
 );
 

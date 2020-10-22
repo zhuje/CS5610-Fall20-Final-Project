@@ -1,10 +1,15 @@
 import React from 'react';
 import {fetchMovieByID, fetchSearchText} from '../services/services'
+import '../style/style.SearchComponent.css'
+import Card from 'react-bootstrap/Card'
+import Button from "react-bootstrap/Button";
+import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 
 
-class HelloWorld extends React.Component {
 
 
+class SearchComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -12,7 +17,6 @@ class HelloWorld extends React.Component {
             value: '',
             movie: []
         };
-
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -29,33 +33,11 @@ class HelloWorld extends React.Component {
                    {
                    this.setState({
                            movie: response.Search
-                                 })
-                       console.log(this.state.movie)
-                   }
-
-
-
-                   )
-
-                //   {
-                // console.log(response)
-                // const arr = [];
-                // Object.keys(response).forEach(key => arr.push({name: key, value: response[key]}))
-                // console.log("after foreach " + arr[0].name, arr[0].value)
-                // })
-
-                // {
-                // this.setState({
-                //                   movie: response.Search
-                //               })
-                // })
-
+                    })
+                    console.log(this.state.movie)
+                   })
     }
 
-    //  movieSelected = (id) =>  {
-    //     sessionStorage.setItem('movieId', id);
-    //         return false;
-    // }
 
     getMovieByID  = (movieID) => {
         // let movieId = sessionStorage.getItem('movieId');
@@ -69,14 +51,13 @@ class HelloWorld extends React.Component {
                 console.log(selectedMovie.Title)
                 console.log(selectedMovie.Year)
 
-
             })
     }
 
 
 
 
-    render() {
+    render(  ) {
         return(
 
         <div>
@@ -117,40 +98,43 @@ class HelloWorld extends React.Component {
             <div className={"container"} >
                 <div className={"row"} >
                     {
-                        // 1) this.state.course -- means we're applying state to the array 'courses' so
-                        // that once the array is changed we'll rerender the array 'courses' to reflect
-                        // the changes on the browser
-                        // 2) .map() just means we're going to take the elements being pass in and
-                        // manipulate them with some other functions
-                        // Here we're applying the function to each the of the components in the
-                        // 3) <CourseRowComponent
-                        //     courseBeingEdited={this.state.courseBeingEdited}
-                        //     editCourse={this.editCourse}
-                        //     deleteCourse={this.deleteCourse}
-                        //     course={course}/>
-                        // Here we're telling the class 'CourseRowComponent' that you can expect a
-                        // property called 'deleteCourse' which will pass in a parameter called
-                        // 'this.deleteCourse' which is a reference to our function that will
-                        // setState and request the browser to rerender the an 'courses' array
-                        // without the deleted course.
+                        // Search Cards --  display response from JSON 'Search' array
+                        this.state.movie.map( m =>
 
-                        this.state.movie.map(   m =>
+                                                  <Card className={"wbdv-search-card text-center"} style={{ width: '18rem' }}>
+                                                      <Card.Img variant="top" src= {m.Poster} />
+                                                      <Card.Body className={"d-flex flex-column "}>
+                                                          <Card.Title> {m.Title} </Card.Title>
+                                                          <Card.Text>
+                                                              {m.Year}
+                                                          </Card.Text>
+                                                          <Link className={"mt-auto"}  to={`/searchByID/${m.imdbID}`}>
+                                                                <Button  onClick={()=> alert( "Click ID: " + m.imdbID )}  className={"  btn btn-lg btn-block btn-primary "} variant="primary"> Details </Button>
+                                                          </Link>
 
-                                                   <div className="col-md-3" key={m.imdbID}  onClick={() => this.getMovieByID(m.imdbID)}>
-                                                       <div className={"well text-center"}>
-                                                       <img src = { m.Poster }/>
-                                                       <h5> {m.Title} </h5>
-                                                       </div>
-                                                   </div>
+                                                          <Button className={" align-self-end btn btn-lg btn-block btn-danger "} variant="primary"> Add </Button>
+                                                      </Card.Body>
+                                                  </Card>
+
                             )
                     }
                 </div>
             </div>
-
-
         </div>
 
     )
     }
 }
-export default HelloWorld;
+
+
+const propertyToDispatchMapper = (dispatch) => ({
+    dispatchSearchByMovieID: (imdbID) =>
+        dispatch({
+                   type: "UPDATE_SEARCH_MOVIE_ID",
+                   imdbID: imdbID
+               })
+})
+
+export default connect
+(propertyToDispatchMapper)
+(SearchComponent) ;
