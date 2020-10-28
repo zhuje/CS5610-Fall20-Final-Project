@@ -27,14 +27,14 @@ class SearchComponent extends React.Component {
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        //alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
         fetchSearchText(this.state.value)
             .then( response =>
                    {
                    this.setState({
                            movie: response.Search
-                    })
+                    });
                     console.log(this.state.movie)
                    })
     }
