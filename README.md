@@ -5,7 +5,10 @@ Partners:
 
 - Jenny Zhu
 - Jeannille Hiciano
-Link to P1: https://docs.google.com/document/d/1QxzSHZNTcYoyZxML0OmT_cdFgjOpFbca2v3qBEvEiqY/edit
+
+
+Link to Google Doc for Project Information : https://docs.google.com/document/d/1QxzSHZNTcYoyZxML0OmT_cdFgjOpFbca2v3qBEvEiqY/edit
+
 
 ## 
 
