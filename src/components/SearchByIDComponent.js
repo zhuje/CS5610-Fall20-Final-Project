@@ -16,7 +16,6 @@ const SearchByIDComponent = ({ movie={}, movieDetails={}, fetchMovieByID  }) =>
 
         <div className="row wdbv-searchByID-row">
 
-
             <div className="col-4">
 
 
