@@ -26,7 +26,7 @@ export class ManagerComponent extends React.Component {
             <div>
 
             <Navbar bg="dark" variant="dark">
-                <Navbar.Brand href="#home"> Movie Match </Navbar.Brand>
+                <Navbar.Brand href="/home"> Movie Match </Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link href="/home"> Home </Nav.Link>
                     <Nav.Link href="/login"> Login </Nav.Link>
@@ -38,7 +38,6 @@ export class ManagerComponent extends React.Component {
 
             </Navbar>
             <br />
-
 
             <BrowserRouter>
                 <div className="container">

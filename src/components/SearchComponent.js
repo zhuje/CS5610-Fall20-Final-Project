@@ -64,13 +64,13 @@ class SearchComponent extends React.Component {
         <div>
 
             {/* Header */}
-            <nav className="navbar navbar-default">
-                <div className="container">
-                    <div className="navbar-header">
-                        <a className="navbar-brand" href="index.html"> MovieMatch </a>
-                    </div>
-                </div>
-            </nav>
+            {/*<nav className="navbar navbar-default">*/}
+            {/*    <div className="container">*/}
+            {/*        <div className="navbar-header">*/}
+            {/*            <a className="navbar-brand" href="index.html"> MovieMatch </a>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*</nav>*/}
 
             {/* Search bar */}
             <div className="container">
