@@ -8,11 +8,11 @@ Parent component of LoggedIn and LoggedOut components. Renders child pages respe
 
 class UserManager extends React.Component {
     state = {
-        loggedIn: true,
+        loggedIn: false,
     }
 
     /*
-    toggle button to switch loggedIn flag
+    toggle function switches loggedIn flag.
      */
     toggle = () =>
         this.setState(prevState => {
@@ -30,7 +30,8 @@ class UserManager extends React.Component {
     render() {
         return (
             <div className="container container-fluid">
-                <h1>User Manager Views</h1>
+                <h1>User view</h1>
+                {/*Tentative button to toggle between loggedIn View & LoggedOut view. */}
                 <span><button className="float-right btn btn-lg btn-info" onClick={this.toggle}>
                     <i className="fa fa-plus-circle"/>Toggle to Other view</button></span>
 
