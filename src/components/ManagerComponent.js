@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter, Route, Link} from "react-router-dom";
 // import Login from "./Login";
-// import Register from "./Register";
+ import SignUp from "./SignUp";
 // import Profile from "./Profile";
 // import CourseListComponent from "./CourseListComponent";
 // import CourseEditorComponent from "./CourseEditorComponent";
@@ -15,6 +15,7 @@ import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import HomeComponent from "./HomeComponent";
+import Login from "./Login";
 
 export class ManagerComponent extends React.Component {
     state = {
@@ -55,7 +56,8 @@ export class ManagerComponent extends React.Component {
                     {/*<Route path="/profile" exact component={Profile}/>*/}
 
                     <Route path={"/home"} exact component={HomeComponent}/>
-
+                    <Route path="/login" exact component={Login}/>
+                    <Route path={"/register"} exact component={SignUp} Register />
                     <Route path={"/search"} exact component={SearchComponent}/>
                     <Route path={"/searchByID/:movieID"}
                            exact component={SearchByIDComponent} />

@@ -5,8 +5,9 @@
 
 import React from "react";
 import { Link } from 'react-router-dom';
-import logoImg from "./img/logo.jpg";
-import { Card, Logo, Form, Input, Button } from './components/AuthForms';
+import logoImg from "../img/logo.jpg";
+import popcornUnsplash from "../img/popcornUnsplash.jpg"
+import { Card, Logo, Form, Input, Button } from './AuthForms';
 
 function Signup() {
 
@@ -30,12 +31,10 @@ function Signup() {
     //     this.setState({password:e.target.value})
     // }
 
-    return(
-        <h1>Sign Up </h1>
-    )
     return (
+        // <h1>Sign Up </h1>
         <Card>
-            <Logo src={logoImg} />
+            <Logo src={popcornUnsplash} />
             <Form >
                 <Input type="email" placeholder="email" />
                 <Input type="password" placeholder="password" />

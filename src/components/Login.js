@@ -1,13 +1,10 @@
-import React, {useState} from "react";
-import {Link, Redirect} from 'react-router-dom';
-import logoImg from "./img/logo.jpg";
-import {Card, Logo, Form, Input, Button, Error} from './components/AuthForms';
-import {useAuth} from "./auth";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+
+import logoImg from "../img/logo.jpg";
+import { Card, Logo, Form, Input, Button, Error } from "./AuthForms";
+import { useAuth } from "../auth.js";
 import {AxiosInstance as axios} from "axios";
-
-
-//update as child of parent "Users" component
-//double check bootstrap installed
 
 function Login(props) {
     const [isLoggedIn, setLoggedIn] = useState(false);
@@ -15,7 +12,7 @@ function Login(props) {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const { setAuthTokens } = useAuth();
-    // let  referer = props.location.state.referer || '/';
+    const referer = props.location.state.referer || '/';
 
     function postLogin() {
         axios.post("https://www.somePlace.com/auth/login", {
@@ -34,9 +31,7 @@ function Login(props) {
     }
 
     if (isLoggedIn) {
-        return <Redirect to={"/"}/>;
-
-        // return <Redirect to={referer}/>;
+        return <Redirect to={referer} />;
     }
 
     return (
@@ -66,8 +61,8 @@ function Login(props) {
         </Card>
     );
 }
-export default Login
 
+export default Login;
 //
 // const Login = () => {
 //     return (

@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+/*
+Style component for authorization forms, login, signup
+ */
 const Card = styled.div`
   box-sizing: border-box;
   max-width: 410px;

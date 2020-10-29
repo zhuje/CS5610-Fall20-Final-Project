@@ -5,9 +5,9 @@ import Admin from "./Admin";
 import Home from "./Home";
 import PrivateRoute from "./PrivateRoute";
 import {AuthContext} from "./auth";
-import Login from "./Login";
+import Login from "./components/Login";
 import {Nav} from "react-bootstrap";
-import Signup from "./SignUp";
+import Signup from "./components/SignUp";
 import UserManager from "./components/UserManager"
 
 
