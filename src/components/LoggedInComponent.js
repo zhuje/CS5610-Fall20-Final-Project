@@ -1,6 +1,6 @@
 
 import React from 'react'
-import {AxiosInstance as axios} from "axios";
+
 
 
 class LoggedInComponent extends React.Component {

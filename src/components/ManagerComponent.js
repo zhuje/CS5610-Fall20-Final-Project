@@ -16,6 +16,7 @@ import Form from 'react-bootstrap/Form'
 import FormControl from 'react-bootstrap/FormControl'
 import HomeComponent from "./HomeComponent";
 import Login from "./Login";
+import Profile from "./Profile";
 
 export class ManagerComponent extends React.Component {
     state = {
@@ -32,7 +33,7 @@ export class ManagerComponent extends React.Component {
                     <Nav.Link href="/home"> Home </Nav.Link>
                     <Nav.Link href="/login"> Login </Nav.Link>
                     <Nav.Link href="/register"> Register </Nav.Link>
-                    <Nav.Link href="/profile"> Profile </Nav.Link>
+                    {/*<Nav.Link href="/profile"> Profile </Nav.Link>*/}
                     <Nav.Link href="/search"> Search </Nav.Link>
 
                 </Nav>
@@ -55,12 +56,13 @@ export class ManagerComponent extends React.Component {
                     {/*<Route path="/register" exact component={Register}/>*/}
                     {/*<Route path="/profile" exact component={Profile}/>*/}
 
-                    <Route path={"/home"} exact component={HomeComponent}/>
+                    <Route path={["/home", "/"]} exact component={HomeComponent}/>
                     <Route path="/login" exact component={Login}/>
                     <Route path={"/register"} exact component={SignUp} Register />
                     <Route path={"/search"} exact component={SearchComponent}/>
                     <Route path={"/searchByID/:movieID"}
                            exact component={SearchByIDComponent} />
+                    <Route path={"/profile"} exact component={Profile}/>
 
 
                     {/*<Route path="/table" exact>*/}

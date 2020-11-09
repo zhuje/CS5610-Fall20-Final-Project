@@ -1,68 +1,77 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 
-import logoImg from "../img/logo.jpg";
+import movieFriends from "../img/movieFriends.jpg";
 import { Card, Logo, Form, Input, Button, Error } from "./AuthForms";
 import { useAuth } from "../auth.js";
 import {AxiosInstance as axios} from "axios";
+import '../style/style.css'
 
-function Login(props) {
-    const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isError, setIsError] = useState(false);
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
-    const { setAuthTokens } = useAuth();
-    const referer = props.location.state.referer || '/';
+export default class Login extends React.Component {
 
-    function postLogin() {
-        axios.post("https://www.somePlace.com/auth/login", {
-            userName,
-            password
-        }).then(result => {
-            if (result.status === 200) {
-                setAuthTokens(result.data);
-                setLoggedIn(true);
-            } else {
-                setIsError(true);
-            }
-        }).catch(e => {
-            setIsError(true);
-        });
+    state = {
+        user: {
+            username: '',
+            password: ''
+        }
     }
 
-    if (isLoggedIn) {
-        return <Redirect to={referer} />;
-    }
+    login = () =>
+        fetch(`http://localhost:8080/login`, {
+            method: 'POST',
+            //embed in the body w/ the user that is trying to register
+            body: JSON.stringify(this.state.user),
+            headers: {
+                'content-type': 'application/json'
+            },
+            credentials: "include"
+        }).then(response => response.json())
+            .then(user => this.props.history.push('./profile')) //new user added once verified
+    //is user and password match to something already stored, if so, it should make current user
 
-    return (
-        <Card>
-            <Logo src={logoImg} />
-            <Form>
-                <Input
-                    type="username"
-                    value={userName}
-                    onChange={e => {
-                        setUserName(e.target.value);
-                    }}
-                    placeholder="email"
-                />
-                <Input
-                    type="password"
-                    value={password}
-                    onChange={e => {
-                        setPassword(e.target.value);
-                    }}
-                    placeholder="password"
-                />
-                <Button onClick={postLogin}>Sign In</Button>
-            </Form>
-            <Link to="/signup">Don't have an account?</Link>
-            { isError &&<Error>The username or password provided were incorrect!</Error> }
-        </Card>
-    );
+
+    render() {
+        return (
+            <Card>
+                <h1>Login</h1>
+                <Logo src={movieFriends}/>
+                <Form>
+                    <Input
+                        onChange={
+                            (e) => {
+                                const username = e.target.value
+                                this.setState(prevState => (
+                                    {
+                                        user: {
+                                            ...prevState.user, username: username
+                                        }
+                                    }
+                                ))
+                            }}
+                        value={this.state.user.username} placeholder="username"/>
+                    <Input onChange={
+                        (e) => {
+                            const password = e.target.value
+                            this.setState(prevState => (
+                                {
+                                    user: {
+                                        ...prevState.user, password: password
+                                    }
+                                }))
+                        }
+                    }
+                           value={this.state.user.password} type="password" placeholder="password"/>
+                    {/*<Button onClick={postLogin}>Sign In</Button>*/}
+                    <Button onClick={this.login}>Sign In</Button>
+                </Form>
+                <Link to="/signup">Don't have an account?</Link>
+                {/*{isError && <Error>The username or password provided were incorrect!</Error>}*/}
+            </Card>
+        );
+    }
 }
 
-export default Login;
+
 //
 // const Login = () => {
 //     return (
