@@ -1,8 +1,12 @@
 import React from "react";
 
-
+/*
+This page was used to test rendering loggedIn vs. loggedOut (this still works,
+so I'd like to keep the mapping together for now. Will delete!
+ */
 class LoggedOutComponent extends React.Component {
 
+    //Thought - general table to inform Users of each user type access...
     render() {
         return (
             <div className={"container container-fluid"}>

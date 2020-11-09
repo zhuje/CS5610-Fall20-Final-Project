@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-
+//TODO: clarify dependency in project description, cite resource, maybe relocate file
 /*
-Style component for authorization forms, login, signup
+Style component for authorization forms, login, signup etc. Styled components
+is a react library / dependency.
  */
 const Card = styled.div`
   box-sizing: border-box;
@@ -47,4 +48,4 @@ const Error = styled.div`
   background-color: red;
 `;
 
-export { Form, Input, Button, Logo, Card, Error };
+export {Form, Input, Button, Logo, Card, Error};

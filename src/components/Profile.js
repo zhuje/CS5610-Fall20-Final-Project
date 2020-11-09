@@ -1,15 +1,18 @@
 import React from "react";
 import '../style/style.css'
-
+/*
+ When a user logins/registers, we navigate to this Profile page -- the User's username is
+  displayed to confirm credentials (via Http session obj, setAttribute in User controller).
+ */
 export default class Profile extends React.Component {
 
     logout = () =>
         //go out to server to log out
-        fetch(`http://localhost:8080/logout`,{
+        fetch(`http://localhost:8080/logout`, {
             method: 'POST',
             credentials: "include"
         }).then(response => this.props.history.push('./home')) //no need to have json body
-    //just logs user w/ cookies out of HttpSession
+    //just logs User (w/ associated cookies) out of current HttpSession
 
     state = {
         currentUser: {
@@ -19,10 +22,10 @@ export default class Profile extends React.Component {
         }
         //TODO: user's friends & movies list:
         //movies: []  // user's liked movies
-        //friends, array of other User obj?
+        //thought: friends, array of other User obj?
     }
 
-//on load, fetch the user via cookies
+//when component is loaded, fetch the specific User
     componentDidMount() {
         fetch(`http://localhost:8080/currentUser`, {
             method: 'GET',
@@ -30,7 +33,6 @@ export default class Profile extends React.Component {
         }).then(response => response.json())
             .then(currentUser => this.setState({
                                                    currentUser: currentUser
-
                                                }))
     }
 
@@ -38,8 +40,8 @@ export default class Profile extends React.Component {
         return (
             <div className={"container"}>
                 <h1> Profile </h1>
-                <h2 id = "loggedUser">Currently logged in as: {this.state.currentUser.username} </h2>
-                {/*map through liked movies array, generate movie grid, like course grid*/}
+                <h2 id="loggedUser">Currently logged in as: {this.state.currentUser.username} </h2>
+                {/*thought: could map through added/liked movies array & generate movie grid here*/}
                 <br/>
                 <button className="btn btn-primary" onClick={this.logout}>
                     Logout
@@ -47,8 +49,5 @@ export default class Profile extends React.Component {
             </div>
         )
     }
-
-    //success when rendered, hi selena, when we register, goes out to server, stores as
-    // currentUser, navigated to the Profile, then profile goes out to get currentUser cookeis),
 
 }

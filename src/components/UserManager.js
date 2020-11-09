@@ -2,10 +2,12 @@ import React from "react";
 import LoggedInComponent from "./LoggedInComponent";
 import LoggedOutComponent from "./LoggedOutComponent"
 import "bootstrap/dist/css/bootstrap.min.css"
-/*
-Parent component of LoggedIn and LoggedOut components. Renders child pages respectively via flag.
- */
 
+/*
+This page was used to test rendering loggedIn vs. loggedOut (this still works,
+so I'd like to keep the mapping together for now. Will delete!
+ */
+//Parent component of LoggedIn and LoggedOut components. Renders child pages respectively via flag
 class UserManager extends React.Component {
     state = {
         loggedIn: false,

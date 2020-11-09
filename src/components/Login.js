@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
+import React from "react";
+import {Link} from "react-router-dom";
 
 import movieFriends from "../img/movieFriends.jpg";
-import { Card, Logo, Form, Input, Button, Error } from "./AuthForms";
-import { useAuth } from "../auth.js";
-import {AxiosInstance as axios} from "axios";
+import {Card, Logo, Form, Input, Button, Error} from "./AuthForms";
 import '../style/style.css'
 
 export default class Login extends React.Component {
@@ -26,9 +24,9 @@ export default class Login extends React.Component {
             },
             credentials: "include"
         }).then(response => response.json())
-            .then(user => this.props.history.push('./profile')) //new user added once verified
-    //is user and password match to something already stored, if so, it should make current user
+            .then(user => this.props.history.push('./profile'))
 
+    //if user and password match to one already stored, will create Current User
 
     render() {
         return (
@@ -61,80 +59,16 @@ export default class Login extends React.Component {
                         }
                     }
                            value={this.state.user.password} type="password" placeholder="password"/>
-                    {/*<Button onClick={postLogin}>Sign In</Button>*/}
                     <Button onClick={this.login}>Sign In</Button>
                 </Form>
                 <Link to="/signup">Don't have an account?</Link>
+                {/*can use Error auth when user credentials do not exist/match*/}
                 {/*{isError && <Error>The username or password provided were incorrect!</Error>}*/}
             </Card>
         );
     }
 }
 
-
-//
-// const Login = () => {
-//     return (
-//         <div class = "container container-fluid">
-//             <h1>Login</h1>
-//
-//             <div className="form-group row">
-//                 <label htmlFor="logUsername"
-//                        className="col-sm-2 col-form-label">
-//                     Username </label>
-//                 <div className="col-sm-10">
-//                     <input className="form-control" id="logUsername"
-//                            placeholder=" Wax"/>
-//                 </div>
-//             </div>
-//
-//             <div className="form-group row">
-//                 <label htmlFor="logPassword"
-//                        className="col-sm-2 col-form-label">
-//                     Password
-//                 </label>
-//                 <div className=" col-sm-10">
-//                     <input type="password" className="form-control"
-//                            id="logPassword" placeholder="123qwe#$%"/>
-//                 </div>
-//             </div>
-//
-//             <div className="form-group row">
-//                 <label className="col-sm-2 col-form-label"></label>
-//                 <div className="col-sm-10">
-//
-//                     <a>
-//                         <button className="btn btn-primary btn-block">
-//                             Sign in
-//                         </button>
-//                     </a>
-//
-//                     <a>
-//                         <button id="cancelBtn" className="btn btn-primary btn-block">
-//                             Cancel
-//                         </button>
-//                     </a>
-//
-//                     <div className="row">
-//                         <div className="col-6">
-//                             <a href="#" className="wbdv-link">Forgot
-//                                 Password?</a>
-//                         </div>
-//                         <div className="col-6">
-//                             {/*// clicking on login page should direct user to account options*/}
-//                             <a href="../register/register.template.client.html"
-//                                className="float-right">Sign up</a>
-//                         </div>
-//
-//                     </div>
-//
-//                 </div>
-//
-//             </div>
-//
-//         </div>
-//     )
-// }
 
 
 
