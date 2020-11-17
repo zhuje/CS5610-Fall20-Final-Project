@@ -29,7 +29,8 @@ export default class Signup extends React.Component {
             credentials: "include"
         }).then(response => response.json())
             .then(user => this.props.history.push('./profile'))
-        //allows to programmatically navigate to specified location, allows for validation
+        //allows to programmatically navigate to specified location (history of browser stack)
+        // allows for validation
         //https://reactrouter.com/web/api/history
     }
 

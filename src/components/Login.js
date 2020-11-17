@@ -25,7 +25,6 @@ export default class Login extends React.Component {
             credentials: "include"
         }).then(response => response.json())
             .then(user => this.props.history.push('./profile'))
-
     //if user and password match to one already stored, will create Current User
 
     render() {

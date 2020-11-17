@@ -10,7 +10,8 @@ so I'd like to keep the mapping together for now. Will delete!
 //Parent component of LoggedIn and LoggedOut components. Renders child pages respectively via flag
 class UserManager extends React.Component {
     state = {
-        loggedIn: false,
+        loggedIn: false
+
     }
 
     /*
@@ -39,6 +40,7 @@ class UserManager extends React.Component {
 
                 {
                     !this.state.loggedIn && <LoggedOutComponent/>
+                    // this.currentUser.role === 'admin' && AdminUserComp
                 }
 
                 {
