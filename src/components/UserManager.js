@@ -1,6 +1,6 @@
 import React from "react";
-import LoggedInComponent from "./LoggedInComponent";
-import LoggedOutComponent from "./LoggedOutComponent"
+import UserView from "./UserView";
+import AnonymousView from "./AnonymousView"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 /*
@@ -39,12 +39,12 @@ class UserManager extends React.Component {
                     <i className="fa fa-plus-circle"/>Toggle to Other view</button></span>
 
                 {
-                    !this.state.loggedIn && <LoggedOutComponent/>
+                    !this.state.loggedIn && <AnonymousView/>
                     // this.currentUser.role === 'admin' && AdminUserComp
                 }
 
                 {
-                    this.state.loggedIn && <LoggedInComponent/>
+                    this.state.loggedIn && <UserView/>
                 }
             </div>
 

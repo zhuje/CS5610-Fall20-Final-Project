@@ -11,6 +11,9 @@ export default class Signup extends React.Component {
     state = {
         user: {
             username: '',
+            firstName: '',
+            lastName: '',
+            email: '',
             password: '',
             verifyPassword: ''
         }
@@ -54,6 +57,47 @@ export default class Signup extends React.Component {
                                 ))
                             }}
                         value={this.state.user.username} placeholder="username"/>
+
+
+                    <Input onChange={
+                        (e) => {
+                            const firstName = e.target.value
+                            this.setState(prevState => (
+                                {
+                                    user: {
+                                        ...prevState.user, firstName: firstName
+                                    }
+                                }))
+                        }
+                    }
+                           value={this.state.user.firstName} placeholder="first name"/>
+
+                    <Input onChange={
+                        (e) => {
+                            const lastName = e.target.value
+                            this.setState(prevState => (
+                                {
+                                    user: {
+                                        ...prevState.user, lastName: lastName
+                                    }
+                                }))
+                        }
+                    }
+                           value={this.state.user.lastName} placeholder="last name"/>
+
+                    <Input onChange={
+                        (e) => {
+                            const email = e.target.value
+                            this.setState(prevState => (
+                                {
+                                    user: {
+                                        ...prevState.user, email: email
+                                    }
+                                }))
+                        }
+                    }
+                           value={this.state.user.email} type="email" placeholder="email"/>
+
                     <Input onChange={
                         (e) => {
                             const password = e.target.value

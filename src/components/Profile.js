@@ -5,6 +5,7 @@ import {logout} from "../services/UserService";
  When a user logins/registers, we navigate to this Profile page -- the User's username is
   displayed to confirm credentials (via Http session obj, setAttribute in User controller).
  */
+//This shpuld probably be the parent component of UserView, AnonymousView, AdminView...
 export default class Profile extends React.Component {
 
 
@@ -47,7 +48,7 @@ export default class Profile extends React.Component {
 
     render() {
         return (
-            <div className={"container"}>
+            <div className={"container-fluid"}>
                 <h1> Profile </h1>
                 <h2 id="loggedUser">Currently logged in as: {this.state.currentUser.username} </h2>
                 {/*thought: could map through added/liked movies array & generate movie grid here*/}

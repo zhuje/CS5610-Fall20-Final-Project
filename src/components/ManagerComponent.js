@@ -17,6 +17,8 @@ import FormControl from 'react-bootstrap/FormControl'
 import HomeComponent from "./HomeComponent";
 import Login from "./Login";
 import Profile from "./Profile";
+import UserView from "./UserView";
+import AnonymousView from "./AnonymousView";
 
 export class ManagerComponent extends React.Component {
     state = {
@@ -35,6 +37,10 @@ export class ManagerComponent extends React.Component {
                     <Nav.Link href="/register"> Register </Nav.Link>
                     <Nav.Link href="/profile"> Profile </Nav.Link>
                     <Nav.Link href="/search"> Search </Nav.Link>
+                    {/*the following pages are just for testing views - DELETE*/}
+                    |||||
+                    <Nav.Link href="/userView"> User-View </Nav.Link>
+                    <Nav.Link href="/anonymousView"> Anonymous-View </Nav.Link>
 
                 </Nav>
 
@@ -63,6 +69,8 @@ export class ManagerComponent extends React.Component {
                     <Route path={"/searchByID/:movieID"}
                            exact component={SearchByIDComponent} />
                     <Route path={"/profile"} exact component={Profile}/>
+                    <Route path={"/userView"} exact component={UserView}/>
+                    <Route path={"/anonymousView"} exact component={AnonymousView}/>
 
 
                     {/*<Route path="/table" exact>*/}

@@ -4,3 +4,16 @@ General Style sheet for Movie Match webapp.
  */
 
 h1{ color: darkslategray}
+
+#userView-userName{
+    color:red;
+}
+
+#userView-card{
+    max-width: 550px;
+    margin: 20px;
+}
+
+.edit-button{
+    margin-left: 10px;
+}

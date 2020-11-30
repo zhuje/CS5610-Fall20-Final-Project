@@ -27,7 +27,7 @@ class SearchComponent extends React.Component {
     }
 
     handleSubmit(event) {
-        //alert('A name was submitted: ' + this.state.value);
+        // alert('A name was submitted: ' + this.state.value);
         event.preventDefault();
         fetchSearchText(this.state.value)
             .then( response =>
@@ -38,6 +38,11 @@ class SearchComponent extends React.Component {
                     console.log(this.state.movie)
                    })
     }
+
+    //could this be similar to handleSubmit to add to user's movies array?
+    // handleAdd(event){
+    //
+    // }
 
 
     // getMovieByID  = (movieID) => {
